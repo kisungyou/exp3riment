@@ -11,55 +11,46 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// rcpparma_hello_world
-arma::mat rcpparma_hello_world();
-RcppExport SEXP _exp3riment_rcpparma_hello_world() {
+// cpp_distance
+arma::mat cpp_distance(arma::mat& X);
+RcppExport SEXP _exp3riment_cpp_distance(SEXP XSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpparma_hello_world());
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_distance(X));
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpparma_outerproduct
-arma::mat rcpparma_outerproduct(const arma::colvec& x);
-RcppExport SEXP _exp3riment_rcpparma_outerproduct(SEXP xSEXP) {
+// cpp_effective
+arma::mat cpp_effective(arma::mat& X);
+RcppExport SEXP _exp3riment_cpp_effective(SEXP XSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_outerproduct(x));
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_effective(X));
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpparma_innerproduct
-double rcpparma_innerproduct(const arma::colvec& x);
-RcppExport SEXP _exp3riment_rcpparma_innerproduct(SEXP xSEXP) {
+// src_standard_kernel
+Rcpp::List src_standard_kernel(arma::mat& D, arma::uword nbdk, double alpha);
+RcppExport SEXP _exp3riment_src_standard_kernel(SEXP DSEXP, SEXP nbdkSEXP, SEXP alphaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_innerproduct(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// rcpparma_bothproducts
-Rcpp::List rcpparma_bothproducts(const arma::colvec& x);
-RcppExport SEXP _exp3riment_rcpparma_bothproducts(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_bothproducts(x));
+    Rcpp::traits::input_parameter< arma::mat& >::type D(DSEXP);
+    Rcpp::traits::input_parameter< arma::uword >::type nbdk(nbdkSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_standard_kernel(D, nbdk, alpha));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_exp3riment_rcpparma_hello_world", (DL_FUNC) &_exp3riment_rcpparma_hello_world, 0},
-    {"_exp3riment_rcpparma_outerproduct", (DL_FUNC) &_exp3riment_rcpparma_outerproduct, 1},
-    {"_exp3riment_rcpparma_innerproduct", (DL_FUNC) &_exp3riment_rcpparma_innerproduct, 1},
-    {"_exp3riment_rcpparma_bothproducts", (DL_FUNC) &_exp3riment_rcpparma_bothproducts, 1},
+    {"_exp3riment_cpp_distance", (DL_FUNC) &_exp3riment_cpp_distance, 1},
+    {"_exp3riment_cpp_effective", (DL_FUNC) &_exp3riment_cpp_effective, 1},
+    {"_exp3riment_src_standard_kernel", (DL_FUNC) &_exp3riment_src_standard_kernel, 3},
     {NULL, NULL, 0}
 };
 

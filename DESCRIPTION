@@ -1,16 +1,14 @@
 Package: exp3riment
 Type: Package
-Title: What the Package Does Using Title Case
+Title: some random stuffs
 Version: 1.0
-Date: 2021-10-21
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: More details about what the package does. See
-        <http://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file>
-        for details on how to write this part.
+Author: Kisung You
+Maintainer: Kisung You <kisungyou@outlook.com>
+Description: More details about what the package does. See something else.
 License: GPL (>= 2)
-Suggests: tinytest
 Encoding: UTF-8
 RoxygenNote: 7.1.2
-Imports: Rcpp (>= 1.0.7)
+Imports: Rcpp (>= 1.0.7), cluster, utils, maotai, stats, rARPACK, igraph
 LinkingTo: Rcpp, RcppArmadillo
+Depends: 
+    R (>= 2.10)
