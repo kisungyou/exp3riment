@@ -8,6 +8,7 @@
 #' @noRd
 #' @aliases exp3riment-package
 #' @import maotai
+#' @import geigen
 #' @importFrom igraph as_adjacency_matrix
 #' @importFrom rARPACK svds eigs_sym
 #' @importFrom stats kmeans rnorm cov

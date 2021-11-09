@@ -25,8 +25,8 @@ dat_graph = dolphins$igraph
 dat_label = dolphins$label
 
 # try PHATE
-dol_log_cmds = phate_graph(dat_graph, potential="log", alg="cmds")
-dol_log_mmds = phate_graph(dat_graph, potential="log", alg="mmds")
+dol_log_cmds = phate_graph(dat_graph, potential="log", alg="cmds", n_landmark=50)
+dol_log_mmds = phate_graph(dat_graph, potential="log", alg="mmds", n_landmark=50)
 
 # visualize
 require("igraph")

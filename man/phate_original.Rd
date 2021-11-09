@@ -35,8 +35,7 @@ Original Version of PHATE
 \examples{
 \dontrun{
 # load the data
-require(Rfast)
-data(Embryoid, package="myPHATE")
+data(Embryoid, package="exp3riment")
 
 nsample = 2000
 sub_id  = sample(1:nrow(Embryoid$data), nsample)
@@ -44,18 +43,16 @@ sub_id  = sample(1:nrow(Embryoid$data), nsample)
 sub_data  = Embryoid$data[sub_id,]
 sub_label = Embryoid$label[sub_id]
 
-distEB    = stats::as.dist(Rfast::Dist(sub_data))
+distEB    = stats::as.dist(fast_dist(sub_data))
 landmark1 = phate_original(distEB, n_landmark=100)$embedding
 landmark2 = phate_original(distEB, n_landmark=250)$embedding
 landmark3 = phate_original(distEB, n_landmark=500)$embedding
-landmark4 = phate_original(distEB, n_landmark=1000)$embedding
 
 opar <- par(no.readonly=TRUE)
-par(mfrow=c(2,2))
+par(mfrow=c(1,3))
 plot(landmark1, pch=19, col=sub_label, main="Case 1")
 plot(landmark2, pch=19, col=sub_label, main="Case 2")
 plot(landmark3, pch=19, col=sub_label, main="Case 3")
-plot(landmark4, pch=19, col=sub_label, main="Case 4")
 par(opar)
 }
 

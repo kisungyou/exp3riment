@@ -17,6 +17,12 @@
 aux_dist <- function(X){
   return(stats::as.dist(cpp_distance(X)))
 }
+#' Fast computation of a distance matrix via Rcpp
+#' 
+#' @export
+fast_dist <- function(X){
+  return(cpp_distance(X))
+}
 
 # * aux_kernel_standard ---------------------------------------------------
 #' @keywords internal

@@ -8,7 +8,7 @@ Description: More details about what the package does. See something else.
 License: GPL (>= 2)
 Encoding: UTF-8
 RoxygenNote: 7.1.2
-Imports: Rcpp (>= 1.0.7), cluster, utils, maotai, stats, rARPACK, igraph
+Imports: Rcpp (>= 1.0.7), cluster, utils, maotai, stats, rARPACK, igraph, geigen
 LinkingTo: Rcpp, RcppArmadillo
 Depends: 
     R (>= 2.10)
