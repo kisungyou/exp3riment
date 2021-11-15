@@ -316,6 +316,7 @@ aux_effective <- function(A){ # input matrix
   if (!isSymmetric(out.cpp)){
     out.cpp = (out.cpp + t(out.cpp))/2
   }
+  out.cpp[(out.cpp<=0)]=0
   return(out.cpp)
 }
 #' @export
