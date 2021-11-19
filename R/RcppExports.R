@@ -9,6 +9,10 @@ cpp_effective <- function(X) {
     .Call('_exp3riment_cpp_effective', PACKAGE = 'exp3riment', X)
 }
 
+cpp_effective_sym <- function(A) {
+    .Call('_exp3riment_cpp_effective_sym', PACKAGE = 'exp3riment', A)
+}
+
 src_standard_kernel <- function(D, nbdk, alpha) {
     .Call('_exp3riment_src_standard_kernel', PACKAGE = 'exp3riment', D, nbdk, alpha)
 }

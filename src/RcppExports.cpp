@@ -33,6 +33,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_effective_sym
+arma::mat cpp_effective_sym(arma::mat& A);
+RcppExport SEXP _exp3riment_cpp_effective_sym(SEXP ASEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type A(ASEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_effective_sym(A));
+    return rcpp_result_gen;
+END_RCPP
+}
 // src_standard_kernel
 Rcpp::List src_standard_kernel(arma::mat& D, arma::uword nbdk, double alpha);
 RcppExport SEXP _exp3riment_src_standard_kernel(SEXP DSEXP, SEXP nbdkSEXP, SEXP alphaSEXP) {
@@ -50,6 +61,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_exp3riment_cpp_distance", (DL_FUNC) &_exp3riment_cpp_distance, 1},
     {"_exp3riment_cpp_effective", (DL_FUNC) &_exp3riment_cpp_effective, 1},
+    {"_exp3riment_cpp_effective_sym", (DL_FUNC) &_exp3riment_cpp_effective_sym, 1},
     {"_exp3riment_src_standard_kernel", (DL_FUNC) &_exp3riment_src_standard_kernel, 3},
     {NULL, NULL, 0}
 };

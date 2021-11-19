@@ -7,8 +7,9 @@ using namespace arma;
 using namespace std;
 
 /*
- * (01) cpp_distance  : alternative to Rfast::Dist
- * (02) cpp_effective : partial routine for effective resistance computation
+ * (01) cpp_distance      : alternative to Rfast::Dist
+ * (02) cpp_effective     : partial routine for effective resistance computation
+ * (03) cpp_effective_sym : to be run inside "aux_effectivesym"
  */
 
 // (01) cpp_distance : alternative to Rfast::Dist ==============================
@@ -43,5 +44,29 @@ arma::mat cpp_effective(arma::mat &X){
   }
   
   // return
+  return(output);
+}
+
+// (03) cpp_effective_sym ======================================================
+// [[Rcpp::export]]
+arma::mat cpp_effective_sym(arma::mat &A){
+  int n = A.n_rows;
+  arma::mat L    = arma::diagmat(arma::sum(A, 1))-A;
+  arma::mat Linv = arma::pinv(L);
+  
+  arma::vec tmpvec(n,fill::zeros);
+  arma::mat output(n,n,fill::zeros);
+  for (int i=0; i<(n-1); i++){
+    for (int j=(i+1); j<n; j++){
+      tmpvec(i) = 1.0;
+      tmpvec(j) = -1.0;
+      
+      output(i,j) = arma::dot(Linv*tmpvec, tmpvec);
+      output(j,i) = output(i,j);
+      
+      tmpvec(i) = 0.0;
+      tmpvec(j) = 0.0;
+    }
+  }
   return(output);
 }

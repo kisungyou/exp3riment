@@ -269,8 +269,7 @@ aux_binarynetwork <- function(input){
 
 
 # * aux_pinv               : pseudo-inverse -------------------------------
-#' @keywords internal
-#' @noRd
+#' @export
 aux_pinv <- function(A){
   svdA      = base::svd(A)
   tolerance = (.Machine$double.eps)*max(c(nrow(A),ncol(A)))*as.double(max(svdA$d))
@@ -319,21 +318,26 @@ aux_effective <- function(A){ # input matrix
 }
 #' @export
 aux_effectivesym <- function(A){
-  n = nrow(A)
-  L = diag(rowSums(A))-A
-  Linv = aux_pinv(L)
+  # Newer Version with C++
+  return(cpp_effective_sym(A))
   
-  output = array(0,c(n,n))
-  for (i in 1:(n-1)){
-    for (j in (i+1):n){
-      est = rep(0,n)
-      est[i] = 1
-      est[j] = -1
-      
-      output[i,j] <- output[j,i] <-sum(as.vector(Linv%*%est)*est)
-    }
-  }
-  return(output)
+  
+  # Older Version with R
+  # n = nrow(A)
+  # L = diag(rowSums(A))-A
+  # Linv = aux_pinv(L)
+  # 
+  # output = array(0,c(n,n))
+  # for (i in 1:(n-1)){
+  #   for (j in (i+1):n){
+  #     est = rep(0,n)
+  #     est[i] = 1
+  #     est[j] = -1
+  #     
+  #     output[i,j] <- output[j,i] <-sum(as.vector(Linv%*%est)*est)
+  #   }
+  # }
+  # return(output)
 }
 # star10 = igraph::make_full_citation_graph(30, directed=FALSE)
 # matt10 = as.matrix(igraph::as_adjacency_matrix(star10))
