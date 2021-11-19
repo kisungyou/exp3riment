@@ -25,8 +25,7 @@ fast_dist <- function(X){
 }
 
 # * aux_kernel_standard ---------------------------------------------------
-#' @keywords internal
-#' @noRd
+#' @export
 aux_kernel_standard <- function(D, nbdk, alpha){
   # input
   x = as.matrix(D)

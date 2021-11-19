@@ -11,7 +11,8 @@ phate_original(
   alpha = 2,
   alg = c("cmds", "mmds"),
   potential = c("log", "sqrt", "none"),
-  n_landmark = 100
+  n_landmark = 100,
+  use_landmark = TRUE
 )
 }
 \arguments{

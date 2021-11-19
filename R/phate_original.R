@@ -37,7 +37,7 @@
 #' 
 #' 
 #' @export
-phate_original <- function(data, ndim=2, nbdk=5, alpha=2.0, alg=c("cmds","mmds"), potential=c("log","sqrt","none"), n_landmark=100){
+phate_original <- function(data, ndim=2, nbdk=5, alpha=2.0, alg=c("cmds","mmds"), potential=c("log","sqrt","none"), n_landmark=100, use_landmark=TRUE){
   # inputs
   step1_start = Sys.time()
   if (inherits(data, "dist")){
@@ -63,17 +63,18 @@ phate_original <- function(data, ndim=2, nbdk=5, alpha=2.0, alg=c("cmds","mmds")
   # build kernel matrix & markov kernel ----------------------------------------
   step2_start = Sys.time()
   
-  #mat_kernel = aux_kernel_standard(D, round(nbdk), as.double(alpha))
-  #mat_P      = base::diag(1/base::rowSums(mat_kernel))%*%mat_kernel 
-  mats_run   = src_standard_kernel(as.matrix(D), round(nbdk), as.double(alpha))
-  mat_kernel = mats_run$mat_kernel
-  mat_P      = mats_run$mat_markov
+  mat_kernel = aux_kernel_standard(D, round(nbdk), as.double(alpha))
+  mat_kernel[is.na(mat_kernel)] = 1 # weird ER case : exp(-0/0tmp)
+  mat_P      = base::diag(1/base::rowSums(mat_kernel))%*%mat_kernel 
+  #mats_run   = src_standard_kernel(as.matrix(D), round(nbdk), as.double(alpha))
+  #mat_kernel = mats_run$mat_kernel
+  #mat_P      = mats_run$mat_markov
   
   time_step2 = Sys.time()-step2_start
   print(paste0("* original : ",round(as.double(time_step2),5), "secs : step 2 complete."))
   
   
-  if (N > M){  # reduced version
+  if ((N > M)&&(use_landmark)){  # reduced version
     start_landmark1 = Sys.time()
     # clustering
     pseudo_data = mat_P%*%matrix(stats::rnorm(N*50), ncol=50)
@@ -122,7 +123,7 @@ phate_original <- function(data, ndim=2, nbdk=5, alpha=2.0, alg=c("cmds","mmds")
     # return
     output = list()
     output$transition = Pout
-    output$embedding  = fin2d #Y
+    output$embedding  = Y # fin2d #Y
     return(output)
   } else {     # naive version
     # optimal t
@@ -157,6 +158,7 @@ phate_original_embedding <- function(P, n_dim, algorithm, potential){
   } else {
     rowMat = P
   }
+  
   
   if (all(algorithm=="cmds")){
     # Classical MDS 
