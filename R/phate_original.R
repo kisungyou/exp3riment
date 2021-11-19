@@ -75,6 +75,7 @@ phate_original <- function(data, ndim=2, nbdk=5, alpha=2.0, alg=c("cmds","mmds")
   
   
   if ((N > M)&&(use_landmark)){  # reduced version
+    print(paste("* original : choose to use landmark-based."))
     start_landmark1 = Sys.time()
     # clustering
     pseudo_data = mat_P%*%matrix(stats::rnorm(N*50), ncol=50)
@@ -126,6 +127,7 @@ phate_original <- function(data, ndim=2, nbdk=5, alpha=2.0, alg=c("cmds","mmds")
     output$embedding  = Y # fin2d #Y
     return(output)
   } else {     # naive version
+    print(paste("* original : choose to use full-data approach."))
     # optimal t
     opt.t = aux_entropyrule(mat_kernel)
     print(paste0("optimal t=",opt.t))

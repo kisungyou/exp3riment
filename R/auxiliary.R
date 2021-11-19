@@ -125,8 +125,7 @@ aux_compression_Q <- function(K, M, N, list_indices){
 
 
 # * aux_entropyrule -------------------------------------------------------
-#' @keywords internal
-#' @noRd
+#' @export
 aux_entropyrule <- function(K){
   vecDhalfinv = 1/sqrt(rowSums(K))
   matA = diag(vecDhalfinv)%*%K%*%diag(vecDhalfinv)
