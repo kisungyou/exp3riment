@@ -1,4 +1,4 @@
-#' Graphical PHATE for Asymmetric Graph
+#' Graphical PHATE for using Effective Resistance
 #' 
 #' 
 #' 

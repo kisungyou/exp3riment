@@ -2,7 +2,7 @@
 % Please edit documentation in R/phate_graph.R
 \name{phate_graph}
 \alias{phate_graph}
-\title{Graphical PHATE for Asymmetric Graph}
+\title{Graphical PHATE for using Effective Resistance}
 \usage{
 phate_graph(
   input,
@@ -15,7 +15,7 @@ phate_graph(
 )
 }
 \description{
-Graphical PHATE for Asymmetric Graph
+Graphical PHATE for using Effective Resistance
 }
 \examples{
 \dontrun{
