@@ -8,6 +8,7 @@
 #' @noRd
 #' @aliases exp3riment-package
 #' @import maotai
+#' @importFrom RANN nn2
 #' @import geigen
 #' @importFrom igraph as_adjacency_matrix
 #' @importFrom rARPACK svds eigs_sym
