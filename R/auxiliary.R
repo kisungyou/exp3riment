@@ -300,7 +300,8 @@ aux_effective <- function(A){ # input matrix
   Q = t(qrq[,2:N])
   
   # 2. compute \bar{L}
-  Lbar = Q%*%L%*%t(Q)
+  eigLbars = Q%*%L%*%t(Q)
+  Lbar     = base::Re(eigLbar$vectors%*%diag(Re(eigLbar$values))%*%t(eigLbar$vectors))
   
   # 3. solve Lyapunov equation
   Sigma = maotai::lyapunov(Lbar, diag(rep(1,N-1)))

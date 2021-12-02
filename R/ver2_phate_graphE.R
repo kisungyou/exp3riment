@@ -35,3 +35,21 @@ ver2_phate_graphE <- function(input, ndim=2, nbdk=5, alpha=2.0, time_step=NULL, 
   output = ver2_phate_original(D, ndim=ndim, nbdk=nbdk, alpha=alpha, time_step=time_step)
   return(output)
 }
+
+# Run some examples
+# # load the data
+# data("dolphins", package="exp3riment")
+# dat_graph = dolphins$igraph
+# dat_label = dolphins$label
+# 
+# dol_nodiag = ver2_phate_graphE(dat_graph, add_diagonal = FALSE)
+# dol_oodiag = ver2_phate_graphE(dat_graph, add_diagonal = TRUE)
+# 
+# require(igraph)
+# par(mfrow=c(1,3))
+# plot(dat_graph, vertex.color=dat_label, vertex.label=NA, 
+#      main="igraph")
+# plot(dat_graph, vertex.color=dat_label, vertex.label=NA, 
+#      main="PHATE+nodiag", layout=dol_nodiag$embedding)
+# plot(dat_graph, vertex.color=dat_label, vertex.label=NA, 
+#      main="PHATE+oodiag", layout=dol_oodiag$embedding)
