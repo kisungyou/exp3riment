@@ -2,7 +2,7 @@
 % Please edit documentation in R/tphate_hadamard.R
 \name{tphate_hadamard}
 \alias{tphate_hadamard}
-\title{T-PHATE : Integrated Diffusion}
+\title{T-PHATE : Hadamard Product}
 \usage{
 tphate_hadamard(data, ndim = 2, nbdk = 5, alpha = 2, temporal = 5, decay = 0)
 }

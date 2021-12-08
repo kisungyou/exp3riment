@@ -10,7 +10,7 @@
 #' @import maotai
 #' @importFrom RANN nn2
 #' @import geigen
-#' @importFrom igraph as_adjacency_matrix
+#' @import igraph
 #' @importFrom rARPACK svds eigs_sym
 #' @importFrom stats kmeans rnorm cov
 #' @importFrom cluster pam
