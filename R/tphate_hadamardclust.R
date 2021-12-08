@@ -6,7 +6,7 @@
 tphate_hadamardclust <- function(data, ndim=2, nbdk=5, alpha=2.0, temporal=5, decay=0){
   # Inputs
   N = base::nrow(data)
-  DIST_data = aux_dist(data)
+  DIST_data = as.matrix(aux_dist(data))
   mydecay   = as.double(decay)
   
   # construct : affinity for data
@@ -14,15 +14,14 @@ tphate_hadamardclust <- function(data, ndim=2, nbdk=5, alpha=2.0, temporal=5, de
   aff_obj = igraph::graph_from_adjacency_matrix(aff_tmp, mode="undirected", weighted=TRUE, diag=FALSE)
   aff_grp = igraph::cluster_louvain(aff_obj)
   aff_lab = igraph::membership(aff_grp)
+  ulabel        = unique(aff_lab)
   
-  ulabel = unique(aff_lab)
+  affinity_data = aff_tmp
   for (i in 1:length(ulabel)){
     tgtid = which(aff_lab==ulabel[i])
-    DIST_data[tgtid,tgtid] = 0
+    affinity_data[tgtid,tgtid] = 0
   }
-  affinity_data = aux_kernel_standard(DIST_data, round(nbdk), as.double(alpha)) 
-  
-  
+
   # construct : affinity for time
   affinity_time = diag(N)
   seq1N = 1:N
