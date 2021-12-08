@@ -21,6 +21,7 @@ tphate_hadamardclust <- function(data, ndim=2, nbdk=5, alpha=2.0, temporal=5, de
     tgtid = which(aff_lab==ulabel[i])
     affinity_data[tgtid,tgtid] = 0
   }
+  diag(affinity_data)=1
 
   # construct : affinity for time
   affinity_time = diag(N)
