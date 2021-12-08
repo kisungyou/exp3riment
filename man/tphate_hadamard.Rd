@@ -4,7 +4,7 @@
 \alias{tphate_hadamard}
 \title{T-PHATE : Integrated Diffusion}
 \usage{
-tphate_hadamard(data, ndim = 2, nbdk = 5, alpha = 2, temporal = 5)
+tphate_hadamard(data, ndim = 2, nbdk = 5, alpha = 2, temporal = 5, decay = 0)
 }
 \description{
 always take an (TxP) input

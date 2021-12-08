@@ -2,10 +2,11 @@
 #' 
 #' always take an (TxP) input
 #' @export
-tphate_hadamard <- function(data, ndim=2, nbdk=5, alpha=2.0, temporal=5){
+tphate_hadamard <- function(data, ndim=2, nbdk=5, alpha=2.0, temporal=5, decay=0){
   # Inputs
   N = base::nrow(data)
   DIST_data = aux_dist(data)
+  mydecay   = max(0, as.double(decay))
   
   # construct : affinity
   affinity_data = aux_kernel_standard(DIST_data, round(nbdk), as.double(alpha)) 
@@ -14,8 +15,8 @@ tphate_hadamard <- function(data, ndim=2, nbdk=5, alpha=2.0, temporal=5){
   for (n in 1:N){
     now_ids = which(abs(n-seq1N)<=temporal)
     now_vec = abs(n-seq1N)[now_ids]
-    affinity_time[n,now_ids] = exp(-now_vec)
-    affinity_time[now_ids,n] = exp(-now_vec)
+    affinity_time[n,now_ids] = exp(-(now_vec^mydecay))
+    affinity_time[now_ids,n] = exp(-(now_vec^mydecay))
   }
   affinity_hadamard = affinity_data*affinity_time
   
