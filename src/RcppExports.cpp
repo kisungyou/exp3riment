@@ -44,6 +44,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// spherical_merge2
+arma::mat spherical_merge2(arma::mat& markov1, arma::mat& markov2, double weight);
+RcppExport SEXP _exp3riment_spherical_merge2(SEXP markov1SEXP, SEXP markov2SEXP, SEXP weightSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type markov1(markov1SEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type markov2(markov2SEXP);
+    Rcpp::traits::input_parameter< double >::type weight(weightSEXP);
+    rcpp_result_gen = Rcpp::wrap(spherical_merge2(markov1, markov2, weight));
+    return rcpp_result_gen;
+END_RCPP
+}
 // src_standard_kernel
 Rcpp::List src_standard_kernel(arma::mat& D, arma::uword nbdk, double alpha);
 RcppExport SEXP _exp3riment_src_standard_kernel(SEXP DSEXP, SEXP nbdkSEXP, SEXP alphaSEXP) {
@@ -62,6 +75,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_exp3riment_cpp_distance", (DL_FUNC) &_exp3riment_cpp_distance, 1},
     {"_exp3riment_cpp_effective", (DL_FUNC) &_exp3riment_cpp_effective, 1},
     {"_exp3riment_cpp_effective_sym", (DL_FUNC) &_exp3riment_cpp_effective_sym, 1},
+    {"_exp3riment_spherical_merge2", (DL_FUNC) &_exp3riment_spherical_merge2, 3},
     {"_exp3riment_src_standard_kernel", (DL_FUNC) &_exp3riment_src_standard_kernel, 3},
     {NULL, NULL, 0}
 };
