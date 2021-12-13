@@ -44,6 +44,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_magic
+arma::cube cpp_magic(arma::mat& cellxgene, int stepsize, int nbdsize, bool apply_sqrt);
+RcppExport SEXP _exp3riment_cpp_magic(SEXP cellxgeneSEXP, SEXP stepsizeSEXP, SEXP nbdsizeSEXP, SEXP apply_sqrtSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type cellxgene(cellxgeneSEXP);
+    Rcpp::traits::input_parameter< int >::type stepsize(stepsizeSEXP);
+    Rcpp::traits::input_parameter< int >::type nbdsize(nbdsizeSEXP);
+    Rcpp::traits::input_parameter< bool >::type apply_sqrt(apply_sqrtSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_magic(cellxgene, stepsize, nbdsize, apply_sqrt));
+    return rcpp_result_gen;
+END_RCPP
+}
 // spherical_merge2
 arma::mat spherical_merge2(arma::mat& markov1, arma::mat& markov2, double weight);
 RcppExport SEXP _exp3riment_spherical_merge2(SEXP markov1SEXP, SEXP markov2SEXP, SEXP weightSEXP) {
@@ -75,6 +89,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_exp3riment_cpp_distance", (DL_FUNC) &_exp3riment_cpp_distance, 1},
     {"_exp3riment_cpp_effective", (DL_FUNC) &_exp3riment_cpp_effective, 1},
     {"_exp3riment_cpp_effective_sym", (DL_FUNC) &_exp3riment_cpp_effective_sym, 1},
+    {"_exp3riment_cpp_magic", (DL_FUNC) &_exp3riment_cpp_magic, 4},
     {"_exp3riment_spherical_merge2", (DL_FUNC) &_exp3riment_spherical_merge2, 3},
     {"_exp3riment_src_standard_kernel", (DL_FUNC) &_exp3riment_src_standard_kernel, 3},
     {NULL, NULL, 0}

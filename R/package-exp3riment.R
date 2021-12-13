@@ -12,7 +12,7 @@
 #' @import geigen
 #' @import igraph
 #' @importFrom rARPACK svds eigs_sym
-#' @importFrom stats kmeans rnorm cov
+#' @importFrom stats kmeans rnorm cov quantile
 #' @importFrom cluster pam
 #' @importFrom utils getFromNamespace
 #' @importFrom Rcpp evalCpp
