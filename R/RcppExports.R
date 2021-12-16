@@ -13,15 +13,15 @@ cpp_effective_sym <- function(A) {
     .Call('_exp3riment_cpp_effective_sym', PACKAGE = 'exp3riment', A)
 }
 
-cpp_magic <- function(cellxgene, stepsize, nbdsize, apply_sqrt) {
-    .Call('_exp3riment_cpp_magic', PACKAGE = 'exp3riment', cellxgene, stepsize, nbdsize, apply_sqrt)
-}
-
 spherical_merge2 <- function(markov1, markov2, weight) {
     .Call('_exp3riment_spherical_merge2', PACKAGE = 'exp3riment', markov1, markov2, weight)
 }
 
 src_standard_kernel <- function(D, nbdk, alpha) {
     .Call('_exp3riment_src_standard_kernel', PACKAGE = 'exp3riment', D, nbdk, alpha)
+}
+
+increase_only_metric_repair <- function(D) {
+    .Call('_exp3riment_increase_only_metric_repair', PACKAGE = 'exp3riment', D)
 }
 
