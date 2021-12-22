@@ -12,8 +12,7 @@
 
 
 # aux_dist ----------------------------------------------------------------
-#' @keywords internal
-#' @noRd
+#' @export
 aux_dist <- function(X){
   return(stats::as.dist(cpp_distance(X)))
 }
