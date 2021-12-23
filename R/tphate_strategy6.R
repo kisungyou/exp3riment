@@ -70,6 +70,5 @@ tphate_strategy6 <- function(data, ndim=2, nbdk=5, alpha=2.0, scaler=0.5){
   output$embedding  = Y
   output$stepsize   = step_hadamard
   output$membership = aff_lab
-  output$finite     = state_transition
   return(output)
 }
