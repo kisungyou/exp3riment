@@ -11,6 +11,7 @@
 #' @importFrom RANN nn2
 #' @import geigen
 #' @import igraph
+#' @importFrom T4cluster sc05Z
 #' @importFrom rARPACK svds eigs_sym
 #' @importFrom stats kmeans rnorm cov quantile
 #' @importFrom cluster pam
