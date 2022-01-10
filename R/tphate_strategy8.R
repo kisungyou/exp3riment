@@ -13,8 +13,8 @@ tphate_strategy8 <- function(data, ndim=2, nbdk=5, alpha=2.0, nclust=10){
   aff_data = aux_kernel_standard(DIST_data, round(nbdk), as.double(alpha)) 
 
   # construct : clustering-based transition matrix
-  tmp_embed = phate_original(data, ndim=ndim, nbdk=nbdk, alpha=alpha, alg="mmds", potential="log")$embedding
-  aff_lab   = T4cluster::sc05Z(tmp_embed, k=nclust, nnbd=round(nbdk))$cluster
+  tmp_embed = as.matrix(phate_original(data, ndim=ndim, nbdk=nbdk, alpha=alpha, alg="mmds", potential="log")$embedding)
+  aff_lab   = T4cluster::sc05Z(tmp_embed, k=round(nclust), nnbd=round(nbdk))$cluster
   
   ulabel  = unique(aff_lab)
   nulabel = length(ulabel)
